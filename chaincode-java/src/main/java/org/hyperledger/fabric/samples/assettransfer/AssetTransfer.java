@@ -257,9 +257,9 @@ public final class AssetTransfer implements ContractInterface {
         String assetJSON = stub.getStringState(assetID);
 
         if (assetJSON == null || assetJSON.isEmpty()) {
-            String errorMessage = String.format("Asset %s does not exist", assetID);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, AssetTransferErrors.ASSET_NOT_FOUND.toString());
+            String errorMessage1 = String.format("Asset %s does not exist", assetID);
+            System.out.println(errorMessage1);
+            throw new ChaincodeException(errorMessage1, AssetTransferErrors.ASSET_NOT_FOUND.toString());
         }
 
         Asset asset = genson.deserialize(assetJSON, Asset.class);
@@ -267,9 +267,9 @@ public final class AssetTransfer implements ContractInterface {
         // create the new asset
 
         if (AssetExists(ctx, newAssetID)) {
-            String errorMessage = String.format("Asset %s already exists", newAssetID);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, AssetTransferErrors.ASSET_ALREADY_EXISTS.toString());
+            String errorMessage2 = String.format("Asset %s already exists", newAssetID);
+            System.out.println(errorMessage2);
+            throw new ChaincodeException(errorMessage2, AssetTransferErrors.ASSET_ALREADY_EXISTS.toString());
         }
 
         Asset newAsset = new Asset(newAssetID, asset.getColor(), asset.getSize(), newOwner, asset.getAppraisedValue());
